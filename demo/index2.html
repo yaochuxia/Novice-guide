@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新手引导2</title>
+	<link style="text/css" rel="stylesheet" href="../build/index.min.css"/>
+	<script src="../js/jquery-1.7.min.js"></script>
+</head>
+<body>
+	<div id="mask"></div>
+	<div id="searchTip">
+		<div class="stepA"><a>下一步</a><span title="关闭">关闭</span></div>
+		<div class="stepB"><a>下一步</a><span title="关闭">关闭</span></div>
+		<div class="stepC"><a>下一步</a><span title="关闭">关闭</span></div>
+		<div class="stepD"><a>下一步</a><span title="关闭">关闭</span></div>
+		<div class="stepE"><a>下一步</a><span title="关闭">关闭</span></div>
+	</div>
+	<script>
+       $(function(){
+       	  //读取cookie 
+       	   var res=document.cookie.substring(5);
+	       // alert(res);
+	      //如果没有cookie，执行以下动作
+	      if(res!="www.open.com.cn"){
+	      	// alert(res)
+	      	$("#mask,#searchTip,#searchTip div:eq(0)").show();
+	      	$("#searchTip div a").click(function(){
+	      		var current=$(this).parent();
+	      		current.hide();
+	      		current.next().show();
+	      	})
+	      	$("#searchTip div span, #searchTip div a:last").click(function(){
+	      		$('#mask, #searchTip').hide();
+	      	})
+	      	var oDate=new Date();
+			oDate.setDate(oDate.getDate()+30);
+			document.cookie="name=www.open.com.cn;expires="+oDate;
+	      }
+       })
+	</script>
+</body>
+</html>
